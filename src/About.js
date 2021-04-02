@@ -1,7 +1,15 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 function About() {
-  return <div>Hello World</div>;
+  const { slug } = useParams();
+
+  return (
+    <div>
+      Hello from About
+      {slug}
+    </div>
+  );
 }
 
 export default About;
