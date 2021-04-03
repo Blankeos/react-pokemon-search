@@ -18,8 +18,6 @@ function App() {
       });
   }, []);
 
-  console.log(pokemon);
-
   return (
     <Router>
       <div className="p-14">
