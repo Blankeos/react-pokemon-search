@@ -15,28 +15,26 @@ function About() {
 
   return (
     <React.Fragment>
-      <div className="w-3/12 m-auto bg-yellow-100 mt-4 shadow-inner flex justify-center flex-col items-center rounded-lg overflow-hidden">
+      <div className="w-8/12 sm:w-5/12 m-auto bg-yellow-100 mt-4 shadow-inner flex justify-center flex-col items-center rounded-lg overflow-hidden">
         <div className="bg-gradient-to-r from-yellow-400 to-pink-400 w-full flex justify-center p-4">
-          <h3 className="text-xl text-white uppercase font-bold">
+          <h3 className="text-md sm:text-xl text-white uppercase font-bold">
             {pokemon ? pokemon.name : "Loading..."}
           </h3>
         </div>
-        <div className="flex justify-center p-4">
-          {pokemon && (
-            <React.Fragment>
-              <img
-                className="select-none"
-                src={pokemon.sprites["front_default"]}
-                alt=""
-              />
-              <img
-                className="select-none"
-                src={pokemon.sprites["back_default"]}
-                alt=""
-              />
-            </React.Fragment>
-          )}
-        </div>
+        {pokemon && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 display flex justify-center items-center">
+            <img
+              className="select-none"
+              src={pokemon.sprites["front_default"]}
+              alt=""
+            />
+            <img
+              className="select-none"
+              src={pokemon.sprites["back_default"]}
+              alt=""
+            />
+          </div>
+        )}
       </div>
       <div className="flex justify-center">
         <Link
