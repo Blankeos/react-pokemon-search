@@ -15,14 +15,14 @@ function About() {
 
   return (
     <React.Fragment>
-      <div className="w-8/12 sm:w-5/12 m-auto bg-yellow-100 mt-4 shadow-inner flex justify-center flex-col items-center rounded-lg overflow-hidden">
+      <div className="w-8/12 md:w-5/12 m-auto bg-yellow-100 mt-4 shadow-inner flex justify-center flex-col items-center rounded-lg overflow-hidden">
         <div className="bg-gradient-to-r from-yellow-400 to-pink-400 w-full flex justify-center p-4">
-          <h3 className="text-md sm:text-xl text-white uppercase font-bold">
+          <h3 className="text-md md:text-xl text-white uppercase font-bold">
             {pokemon ? pokemon.name : "Loading..."}
           </h3>
         </div>
         {pokemon && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 display flex justify-center items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 display flex justify-center items-center">
             <img
               className="select-none"
               src={pokemon.sprites["front_default"]}

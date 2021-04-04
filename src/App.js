@@ -33,6 +33,14 @@ function App() {
             </header>
           </Link>
         </div>
+
+        <div className="w-full flex justify-center">
+          <input
+            type="text"
+            placeholder="  Enter Pokemon here"
+            className="mt-10 p-2 w-10/12 md:w-6/12 bg-white ring-1 ring-yellow-300 rounded-lg placeholder-gray-400 text-gray-900 appearance-none shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          ></input>
+        </div>
       </div>
 
       <Switch>
