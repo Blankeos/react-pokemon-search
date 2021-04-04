@@ -36,12 +36,12 @@ function App() {
       <div className="p-14">
         <div className="flex flex-col items-center">
           <Link
-            className="flex gap-4 transform transition hover:scale-105"
+            className="flex flex-col gap-2 transform transition hover:scale-105"
             to="/"
           >
-            <img className="h-12" src={PikachuLogo}></img>
-            <header className="text-4xl font-bold text-yellow-500">
-              Pokemon Picker
+            <img className="h-14" src={PikachuLogo}></img>
+            <header className="text-4xl font-bold text-yellow-500 text-center">
+              Pokémon Picker
             </header>
           </Link>
         </div>
