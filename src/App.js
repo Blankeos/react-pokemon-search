@@ -2,11 +2,13 @@ import "./App.css";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import About from "./About";
 import Home from "./Home";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import PikachuLogo from "./pikachu.svg";
 
 function App() {
-  const [pokemon, setPokemon] = useState();
+  const [pokemon, setPokemon] = useState([]);
+  const [text, setText] = useState("");
+  const [filteredPokemon, setFilteredPokemon] = useState([]);
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=600offset=0&")
@@ -18,6 +20,16 @@ function App() {
         setPokemon({ ...data, results });
       });
   }, []);
+
+  useMemo(() => {
+    if (text.length === 0) {
+      setFilteredPokemon(pokemon.results);
+      return;
+    }
+    setFilteredPokemon(() => {
+      return pokemon.results.filter((poke) => poke.name.includes(text));
+    });
+  }, [pokemon.results, text]);
 
   return (
     <Router>
@@ -33,14 +45,6 @@ function App() {
             </header>
           </Link>
         </div>
-
-        <div className="w-full flex justify-center">
-          <input
-            type="text"
-            placeholder="  Enter Pokemon here"
-            className="mt-10 p-2 w-10/12 md:w-6/12 bg-white ring-1 ring-yellow-300 rounded-lg placeholder-gray-400 text-gray-900 appearance-none shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-          ></input>
-        </div>
       </div>
 
       <Switch>
@@ -48,7 +52,15 @@ function App() {
           <About></About>
         </Route>
         <Route exact path="/">
-          {pokemon && <Home prop={pokemon.results} />}
+          <div className="w-full flex justify-center">
+            <input
+              type="text"
+              onChange={($event) => setText($event.target.value)}
+              placeholder="  Enter Pokemon here"
+              className="mt-10 p-2 w-10/12 md:w-6/12 bg-white ring-1 ring-yellow-300 rounded-lg placeholder-gray-400 text-gray-900 appearance-none shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            />
+          </div>
+          {pokemon && <Home prop={filteredPokemon} />}
         </Route>
       </Switch>
     </Router>
