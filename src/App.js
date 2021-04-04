@@ -8,7 +8,8 @@ function App() {
   const [pokemon, setPokemon] = useState();
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?offset=0")
+    document.title = "Carlo's Pokedex App";
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=600offset=0&")
       .then((res) => res.json())
       .then((data) => {
         const results = data.results.map((pokemon, idx) => {
