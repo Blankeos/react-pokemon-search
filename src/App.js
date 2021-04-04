@@ -31,6 +31,10 @@ function App() {
     });
   }, [pokemon.results, text]);
 
+  const resetFilters = () => {
+    setFilteredPokemon(pokemon.results);
+  };
+
   return (
     <Router>
       <div className="p-14">
@@ -60,7 +64,9 @@ function App() {
               className="mt-10 p-2 w-10/12 md:w-6/12 bg-white ring-1 ring-yellow-300 rounded-lg placeholder-gray-400 text-gray-900 appearance-none shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
             />
           </div>
-          {pokemon && <Home prop={filteredPokemon} />}
+          {pokemon && (
+            <Home prop={filteredPokemon} resetFilters={resetFilters} />
+          )}
         </Route>
       </Switch>
     </Router>
