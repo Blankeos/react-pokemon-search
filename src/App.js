@@ -3,12 +3,12 @@ import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import About from "./About";
 import Home from "./Home";
 import { useEffect, useState } from "react";
+import PikachuLogo from "./pikachu.svg";
 
 function App() {
   const [pokemon, setPokemon] = useState();
 
   useEffect(() => {
-    document.title = "Carlo's Pokedex App";
     fetch("https://pokeapi.co/api/v2/pokemon?limit=600offset=0&")
       .then((res) => res.json())
       .then((data) => {
@@ -23,7 +23,11 @@ function App() {
     <Router>
       <div className="p-14">
         <div className="flex flex-col items-center">
-          <Link to="/">
+          <Link
+            className="flex gap-4 transform transition hover:scale-105"
+            to="/"
+          >
+            <img className="h-12" src={PikachuLogo}></img>
             <header className="text-4xl font-bold text-yellow-500">
               Pokemon Picker
             </header>

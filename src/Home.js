@@ -6,7 +6,7 @@ function Home({ prop: results }) {
       {results &&
         results.map((val) => {
           return (
-            <div className="ml-4 text-2xl text-blue-400">
+            <div className="ml-4 text-2xl text-yellow-500 transition hover:text-yellow-600">
               <Link to={`/about/${val.idx}`} key={val.idx}>
                 {val.name}
               </Link>
