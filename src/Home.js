@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 function highlightSearch(text, pokemon) {
   let charFirstIndex = pokemon.name.toUpperCase().indexOf(text.toUpperCase());
   let charLastIndex = charFirstIndex + text.length;
+  let capitalCase =
+    pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
   return (
     <span>
-      {pokemon.name.slice(0, charFirstIndex)}
-      <b>{pokemon.name.slice(charFirstIndex, charLastIndex)}</b>
-      {pokemon.name.slice(charLastIndex, pokemon.name.length)}
+      {capitalCase.slice(0, charFirstIndex)}
+      <b>{capitalCase.slice(charFirstIndex, charLastIndex)}</b>
+      {capitalCase.slice(charLastIndex, pokemon.name.length)}
     </span>
   );
 }

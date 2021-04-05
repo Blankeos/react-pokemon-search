@@ -1,9 +1,9 @@
 import "./App.css";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
-import About from "./About";
-import Home from "./Home";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import React, { useEffect, useState, useMemo, Suspense } from "react";
 import PikachuLogo from "./pikachu.svg";
+import About from "./About";
+const Home = React.lazy(() => import("./Home"));
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -11,7 +11,7 @@ function App() {
   const [filteredPokemon, setFilteredPokemon] = useState([]);
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=898&offset=0")
       .then((res) => res.json())
       .then((data) => {
         const results = data.results.map((pokemon, idx) => {
@@ -71,13 +71,21 @@ function App() {
               className="mt-10 p-2 w-10/12 md:w-6/12 bg-white ring-1 ring-yellow-300 rounded-lg placeholder-gray-400 text-gray-900 appearance-none shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
             />
           </div>
-          {pokemon && (
-            <Home
-              prop={filteredPokemon}
-              resetFilters={resetFilters}
-              text={text}
-            />
-          )}
+          <Suspense
+            fallback={
+              <div className="text-center mt-12 font-bold text-lg text-gray-500">
+                Rendering Pokemon...
+              </div>
+            }
+          >
+            {pokemon && (
+              <Home
+                prop={filteredPokemon}
+                resetFilters={resetFilters}
+                text={text}
+              />
+            )}
+          </Suspense>
         </Route>
       </Switch>
     </Router>
