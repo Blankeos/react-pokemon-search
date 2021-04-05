@@ -48,6 +48,9 @@ function App() {
             <img className="h-14" src={PikachuLogo}></img>
             <header className="text-4xl font-bold text-yellow-500 text-center">
               Pokémon Picker
+              <p className="text-sm font-normal text-yellow-400">
+                Made by Carlo Taleon
+              </p>
             </header>
           </Link>
         </div>

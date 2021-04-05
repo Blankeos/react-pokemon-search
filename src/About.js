@@ -15,7 +15,7 @@ function About() {
 
   return (
     <React.Fragment>
-      <div className="w-8/12 md:w-5/12 m-auto bg-yellow-100 mt-4 shadow-inner flex justify-center flex-col items-center rounded-lg overflow-hidden">
+      <div className="w-8/12 md:w-5/12 m-auto mt-4 shadow-lg flex justify-center flex-col items-center rounded-lg overflow-hidden bg-gradient-to-br from-yellow-400 to-orange-500">
         <div className="bg-gradient-to-r from-yellow-400 to-pink-400 w-full flex justify-center p-4">
           <h3 className="text-md md:text-xl text-white uppercase font-bold">
             {pokemon ? pokemon.name : "Loading..."}
