@@ -32,6 +32,7 @@ function App() {
   }, [pokemon.results, text]);
 
   const resetFilters = () => {
+    setText("");
     setFilteredPokemon(pokemon.results);
   };
 
@@ -40,6 +41,7 @@ function App() {
       <div className="p-14">
         <div className="flex flex-col items-center">
           <Link
+            onClick={resetFilters}
             className="flex flex-col gap-2 transform transition hover:scale-105"
             to="/"
           >
