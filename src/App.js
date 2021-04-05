@@ -2,7 +2,7 @@ import "./App.css";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import About from "./About";
 import Home from "./Home";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import PikachuLogo from "./pikachu.svg";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   const [filteredPokemon, setFilteredPokemon] = useState([]);
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=600offset=0&")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
       .then((res) => res.json())
       .then((data) => {
         const results = data.results.map((pokemon, idx) => {
@@ -27,7 +27,9 @@ function App() {
       return;
     }
     setFilteredPokemon(() => {
-      return pokemon.results.filter((poke) => poke.name.includes(text));
+      return pokemon.results.filter((poke) =>
+        poke.name.includes(text.toLowerCase())
+      );
     });
   }, [pokemon.results, text]);
 

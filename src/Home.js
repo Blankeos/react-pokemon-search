@@ -1,18 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// const highlight = (pokemon, text) => {
-//   // let charFirstIndex = pokemon.name.indexOf(text.toLowerCase());
-//   // let charLastIndex = charFirstIndex + text.length;
-
-//   console.log(pokemon.name);
-//   return <span>{pokemon.name}</span>;
-// };
 function highlightSearch(text, pokemon) {
-  console.log("loggers");
-  let charFirstIndex = pokemon.name.indexOf(text.toLowerCase());
+  let charFirstIndex = pokemon.name.toUpperCase().indexOf(text.toUpperCase());
   let charLastIndex = charFirstIndex + text.length;
-
   return (
     <span>
       {pokemon.name.slice(0, charFirstIndex)}
