@@ -73,7 +73,7 @@ function App() {
           </div>
           <Suspense
             fallback={
-              <div className="text-center mt-12 font-bold text-lg text-gray-500">
+              <div className="text-center mt-12 font-bold text-lg text-gray-400">
                 Rendering Pokemon...
               </div>
             }
