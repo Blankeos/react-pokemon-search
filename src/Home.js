@@ -1,6 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
-function Home({ prop: results, resetFilters: resetFilters }) {
+
+// const highlight = (pokemon, text) => {
+//   // let charFirstIndex = pokemon.name.indexOf(text.toLowerCase());
+//   // let charLastIndex = charFirstIndex + text.length;
+
+//   console.log(pokemon.name);
+//   return <span>{pokemon.name}</span>;
+// };
+function highlightSearch(text, pokemon) {
+  console.log("loggers");
+  let charFirstIndex = pokemon.name.indexOf(text.toLowerCase());
+  let charLastIndex = charFirstIndex + text.length;
+
+  return (
+    <span>
+      {pokemon.name.slice(0, charFirstIndex)}
+      <b>{pokemon.name.slice(charFirstIndex, charLastIndex)}</b>
+      {pokemon.name.slice(charLastIndex, pokemon.name.length)}
+    </span>
+  );
+}
+function Home({ prop: results, resetFilters: resetFilters, text: text }) {
   return (
     <div className="w-full">
       <div className="mt-10 mx-12 grid grid-cols-2 md:grid-cols-3 lg:mx-52 gap-4">
@@ -20,7 +41,7 @@ function Home({ prop: results, resetFilters: resetFilters }) {
                   </div>
                   <div className="bg-white w-full flex justify-center items-center py-5">
                     <p className="text-shadow text-base md:text-lg text-gray-500">
-                      {val.name.charAt(0).toUpperCase() + val.name.slice(1)}
+                      {highlightSearch(text, val)}
                     </p>
                   </div>
                 </div>

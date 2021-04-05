@@ -70,7 +70,11 @@ function App() {
             />
           </div>
           {pokemon && (
-            <Home prop={filteredPokemon} resetFilters={resetFilters} />
+            <Home
+              prop={filteredPokemon}
+              resetFilters={resetFilters}
+              text={text}
+            />
           )}
         </Route>
       </Switch>
