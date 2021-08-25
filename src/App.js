@@ -22,15 +22,21 @@ function App() {
   }, []);
 
   useMemo(() => {
-    if (text.length === 0) {
-      setFilteredPokemon(pokemon.results);
-      return;
-    }
-    setFilteredPokemon(() => {
-      return pokemon.results.filter((poke) =>
-        poke.name.includes(text.toLowerCase())
-      );
-    });
+    const timeOut = setTimeout(() => {
+      if (text.length === 0) {
+        setFilteredPokemon(pokemon.results);
+      } else {
+        setFilteredPokemon(() => {
+          return pokemon.results.filter((p) =>
+            p.name.includes(text.toLowerCase())
+          );
+        });
+      }
+    }, 2000);
+
+    return () => {
+      clearTimeout(timeOut);
+    };
   }, [pokemon.results, text]);
 
   const resetFilters = () => {

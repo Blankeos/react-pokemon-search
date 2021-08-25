@@ -14,6 +14,7 @@ function highlightSearch(text, pokemon) {
     </span>
   );
 }
+
 function Home({ prop: results, resetFilters: resetFilters, text: text }) {
   return (
     <div className="w-full">
